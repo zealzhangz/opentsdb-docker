@@ -17,11 +17,21 @@ tsd.storage.hbase.zk_quorum = 10.201.12.66
 ```
 ## Running this Image
 
-```bah
-docker run -dp 4242:4242 \
+```bash
+docker run -dp 4242:4242 --add-host my-zookeeper-server-host:my-zookeeper-server-ip \
 -v /xxx/myopentsdb:/opentsdb \
 zealzhangz/opentsdb:2.4.0 tsdb tsd --config=/opentsdb/opentsdb.conf
 ```
+- my-zookeeper-server-host: your zookeeper server hostname
+- my-zookeeper-server-ip: your zookeeper server ip
+
+**Tips:If you have a Zooleeper Cluster,you can add multiple hosts like below**
+
+```bash
+docker run -dp 4242:4242 --add-host zookeeper-host1:zookeeper-ip1 --add-host zookeeper-host2:zookeeper-ip2  \
+-v /xxx/myopentsdb:/opentsdb zealzhangz/opentsdb:2.4.0 tsdb tsd --config=/opentsdb/opentsdb.conf
+```
+
 
 ## Exposed Ports
 - 4242 HTTP API/Web port

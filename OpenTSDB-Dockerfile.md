@@ -19,10 +19,10 @@ tsd.http.request.enable_chunked = true
 tsd.http.request.max_chunk = 655350
 tsd.storage.hbase.zk_quorum = 10.201.12.66
 ```
-7. 添加了配置文件和 `log` 的宿主机卷挂载点，镜像内默认使用 `/opentsdb` 挂载点，日志会自动写到该目录下面，自定义的配置也放下面，一个启动命令例子：
+7. 添加了配置文件和 `log` 的宿主机卷挂载点，镜像内默认使用 `/opentsdb` 挂载点，日志会自动写到该目录下面，自定义的配置也放下面，记得要添加 `zookeeper hosts` 映射，一个启动命令例子：
 
 ```bash
-docker run -dp 4242:4242 \
+docker run -dp 4242:4242 --add-host my-zookeeper-server-host:y-zookeeper-server-ip \
 -v /xxx/myopentsdb:/opentsdb \
 zealzhang/opentsdb:2.4.0 tsdb tsd --config=/opentsdb/opentsdb.conf
 ```
