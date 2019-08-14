@@ -20,7 +20,7 @@ tsd.storage.hbase.zk_quorum = 10.201.12.66
 ```bah
 docker run -dp 4242:4242 \
 -v /xxx/myopentsdb:/opentsdb \
-zealzhang/opentsdb:2.4.0 tsdb tsd --config=/opentsdb/opentsdb.conf
+zealzhangz/opentsdb:2.4.0 tsdb tsd --config=/opentsdb/opentsdb.conf
 ```
 
 ## Exposed Ports
